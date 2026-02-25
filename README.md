@@ -1,16 +1,9 @@
-# Orquestación de Microservicios Resilientes con Docker Compose y Redis 🚀
-
-Este proyecto demuestra la implementación de un sistema con capacidad de **Self-healing**.
-
-## 🛠️ Tecnologías
-* Python (Retry Logic)
-* Docker & Docker Compose
-* Redis
-
-## 🚀 Ejecución
-```bash
-docker-compose up --build
-```
+## 🧠 Lógica de Resiliencia (Self-Healing)
+La aplicación implementa un patrón de **Retry Logic** que gestiona las dependencias de infraestructura:
+1. Al iniciar, el servicio `monitor` intenta conectar con Redis.
+2. Si Redis no está disponible (ej. arranque lento), la aplicación captura la excepción `ConnectionError`.
+3. El sistema espera 3 segundos y reintenta indefinidamente hasta establecer la conexión.
+4. Una vez conectado, inicia el reporte de estado operacional.
 
 ---
 Proyecto desarrollado por **Darwin Braca**
