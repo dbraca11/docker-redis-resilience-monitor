@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  monitor:
+    build: .
+    container_name: monitor_service
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+    restart: always
+  redis:
+    image: redis:alpine
+    container_name: redis_db
+    ports:
+      - "6379:6379"
+    restart: always
