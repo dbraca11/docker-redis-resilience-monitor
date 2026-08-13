@@ -26,3 +26,45 @@ Debería devolver: "OPERACIONAL".
 
 ---
 Proyecto desarrollado por **Darwin Braca**
+
+## 🗺️ Roadmap de Evolución del Proyecto
+
+- [x] **Fase 1: Resiliencia & Monitoreo Base (Completado)**
+  - [x] Contenerización de servicio Python y Redis con Docker Compose.
+  - [x] Implementación de patrón de reintentos (*Retry Logic*) para tolerancia a fallas de arranque.
+  - [x] Ingesta automática de métricas de estado en base de datos en memoria (Redis).
+
+- [ ] **Fase 2: Observabilidad & Alertas**
+  - [ ] Integración de Redis Exporter para métricas de rendimiento.
+  - [ ] Implementación de Healthchecks nativos en `docker-compose.yml`.
+  - [ ] Sistema de notificaciones automáticas ante fallas persistentes de conexión.
+
+- [ ] **Fase 3: Escalamiento & Alta Disponibilidad**
+  - [ ] Configuración de Redis Sentinel para conmutación por error (*Failover*).
+  - [ ] Migración de arquitectura hacia despliegues gestionados en Kubernetes.
+
+---
+
+## 📊 Roadmap Gráfico
+
+```mermaid
+flowchart TD
+    subgraph F1["Fase 1: Resiliencia Base (Completado)"]
+        A1["Docker Compose Stack"]
+        A2["Python Monitor + Retry Logic"]
+        A3["Persistencia en Redis DB"]
+    end
+
+    subgraph F2["Fase 2: Observabilidad & Alertas"]
+        B1["Docker Healthchecks"]
+        B2["Redis Exporter Metrics"]
+        B3["Alertas de Desconexión"]
+    end
+
+    subgraph F3["Fase 3: Alta Disponibilidad"]
+        C1["Redis Sentinel Cluster"]
+        C2["Estrategias Failover"]
+        C3["Orquestación en Kubernetes"]
+    end
+
+    F1 --> F2 --> F3
